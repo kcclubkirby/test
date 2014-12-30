@@ -579,7 +579,7 @@ function SetVelocity (velocity : Vector3) {
 	grounded = false;
 	movement.velocity = velocity;
 	movement.frameVelocity = Vector3.zero;
-	SendMessage("OnExternalVelocity");
+	//SendMessage("OnExternalVelocity");
 }
 
 // Require a character controller to be attached to the same game object

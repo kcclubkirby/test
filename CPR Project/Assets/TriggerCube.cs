@@ -27,6 +27,7 @@ public class TriggerCube : MonoBehaviour {
 				playerMovement.movement.maxAirAcceleration = 0;
 				playerMovement.movement.gravity = 0;
 				playerMovement.movement.maxFallSpeed = 0;
+				playerMovement.SetVelocity(Vector3.zero);
 				beginCharacterCrouch = true;
 			}
 		}
@@ -80,5 +81,7 @@ public class TriggerCube : MonoBehaviour {
 				trigger.transform.position = pos;
 			}
 		}
+		int x;
+		x = 0;
 	}
 }
