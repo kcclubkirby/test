@@ -33,7 +33,7 @@ class CharacterMotorMovement {
 	var maxAirAcceleration : float = 20.0;
 
 	// The gravity for the character
-	var gravity : float = 10.0;
+	var gravity : float = 0.0;
 	var maxFallSpeed : float = 20.0;
 	
 	// For the next variables, @System.NonSerialized tells Unity to not serialize the variable or show it in the inspector view.
@@ -579,7 +579,7 @@ function SetVelocity (velocity : Vector3) {
 	grounded = false;
 	movement.velocity = velocity;
 	movement.frameVelocity = Vector3.zero;
-	SendMessage("OnExternalVelocity");
+	//SendMessage("OnExternalVelocity");
 }
 
 // Require a character controller to be attached to the same game object
