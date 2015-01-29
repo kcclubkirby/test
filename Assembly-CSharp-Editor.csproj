@@ -46,20 +46,37 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\LeapMotion\Editor\HandControllerEditor.cs" />
      <Compile Include="Assets\OVR\Editor\OVRBuild.cs" />
      <Compile Include="Assets\OVR\Editor\OVRGameView.cs" />
      <Compile Include="Assets\OVR\Editor\OVRPrefabs.cs" />
      <Compile Include="Assets\OVR\Editor\OVRShimLoader.cs" />
+     <None Include="Assets\LeapMotion\Resources\LeapIRUndistorted.shader" />
      <None Include="Assets\Plugins\donotdelete.txt" />
+     <None Include="Assets\LeapMotion\Materials\Sources\Shaders\Toony-Basic.shader" />
+     <None Include="Assets\LeapMotion\Resources\LeapIRDistorted.shader" />
+     <None Include="Assets\LeapMotion\Resources\LeapRGBDistorted.shader" />
      <None Include="Assets\Plugins\x86_64\donotdelete.txt" />
+     <None Include="Assets\LeapMotion\InteractionUtils (alpha)\readme.txt" />
+     <None Include="Assets\LeapMotion\Resources\LeapIRUndistorted_foreground.shader" />
+     <None Include="Assets\LeapMotion\DemoResources\ScrollerText.txt" />
+     <None Include="Assets\LeapMotion\readme.txt" />
      <None Include="Assets\OVR\Shaders\TextShader3D.shader" />
+     <None Include="Assets\LeapMotion\Shaders\RimShading.shader" />
+     <None Include="Assets\LeapMotion\Materials\Sources\Shaders\Toony-BasicOutline.shader" />
+     <None Include="Assets\LeapMotion\Materials\Sources\Shaders\Toony-LightedOutline.shader" />
+     <None Include="Assets\LeapMotion\Materials\Sources\Shaders\Toony-Lighted.shader" />
      <None Include="Assets\OVR\Shaders\OVRGUIShader.shader" />
      <None Include="Assets\Plugins\x86\donotdelete.txt" />
+     <None Include="Assets\LeapMotion\Resources\LeapRGBUndistorted.shader" />
  <Reference Include="UnityEngine.UI">
  <HintPath>D:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.1/UnityEngine.UI.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.UI">
  <HintPath>D:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.1/Editor/UnityEditor.UI.dll</HintPath>
+ </Reference>
+ <Reference Include="LeapCSharp.NET3.5">
+ <HintPath>C:/Users/David/Documents/CPR Project/Assets/LeapCSharp.NET3.5.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.Graphs">
  <HintPath>D:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEditor.Graphs.dll</HintPath>

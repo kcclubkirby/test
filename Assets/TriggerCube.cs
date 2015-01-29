@@ -17,7 +17,7 @@ public class TriggerCube : MonoBehaviour {
 
 	//Constants for the accepted range for values to be and for how low to crouch
 	private const float acceptedRange = 0.05f;
-	private const float crouchVal = 0.3f;
+	private const float crouchVal = 0.7f;
 
 	//Triggers when something collides with the box
 	void OnTriggerEnter(Collider other){
@@ -42,7 +42,7 @@ public class TriggerCube : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		//set the Chest component
-		chestComponent = chestDummy.GetComponent<CPRChest>();
+		chestComponent = chestDummy.GetComponentInChildren<CPRChest>();
 	}
 	
 	// Update is called once per frame

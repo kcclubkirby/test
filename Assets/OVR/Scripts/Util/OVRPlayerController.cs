@@ -256,10 +256,10 @@ public class OVRPlayerController : MonoBehaviour
 
 		//Use keys to ratchet rotation
 		if (Input.GetKeyDown(KeyCode.Q))
-			euler.y -= RotationRatchet;
+			euler.x -= RotationRatchet/2.0f;
 
 		if (Input.GetKeyDown(KeyCode.E))
-			euler.y += RotationRatchet;
+			euler.x += RotationRatchet/2.0f;
 
 		float rotateInfluence = SimulationRate * Time.deltaTime * RotationAmount * RotationScaleMultiplier;
 
