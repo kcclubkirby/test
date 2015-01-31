@@ -177,36 +177,72 @@ public class OVRUGUI
         {           
             LowPersistence = UIObjectManager(LowPersistence, "LowPersistence", posY -= offsetY, strLPM, fontSize);
         }
+		else
+		{
+			LowPersistence = new GameObject();
+			LowPersistence.name = "LowPersistence";
+			LowPersistence.transform.parent = NewGUIManager.transform;
+		}
 
         // Print out for VisionMode
         if (!string.IsNullOrEmpty(strVisionMode))
         {
             VisionMode = UIObjectManager(VisionMode, "VisionMode", posY -= offsetY, strVisionMode, fontSize);
         }
+		else
+		{
+			VisionMode = new GameObject();
+			VisionMode.name = "VisionMode";
+			VisionMode.transform.parent = NewGUIManager.transform;
+		}
 
         // Print out for FPS
         if (!string.IsNullOrEmpty(strFPS))
         {
             FPS = UIObjectManager(FPS, "FPS", posY -= offsetY, strFPS, fontSize);
         }
+		else
+		{
+			FPS = new GameObject();
+			FPS.name = "FPS";
+			FPS.transform.parent = NewGUIManager.transform;
+		}
 
         // Print out for Prediction
         if (!string.IsNullOrEmpty(strPrediction))
         {
             Prediction = UIObjectManager(Prediction, "Prediction", posY -= offsetY, strPrediction, fontSize);
         }
+		else
+		{
+			Prediction = new GameObject();
+			Prediction.name = "Prediction";
+			Prediction.transform.parent = NewGUIManager.transform;
+		}
 
         // Print out for IPD
         if (!string.IsNullOrEmpty(strIPD))
         {
             IPD = UIObjectManager(IPD, "IPD", posY -= offsetY, strIPD, fontSize);
         }
+		else
+		{
+			IPD = new GameObject();
+			IPD.name = "IPD";
+			IPD.transform.parent = NewGUIManager.transform;
+		}
 
         // Print out for FOV
         if (!string.IsNullOrEmpty(strFOV))
         {
             FOV = UIObjectManager(FOV, "FOV", posY -= offsetY, strFOV, fontSize);
         }
+		else
+		{
+			FOV = new GameObject();
+			FOV.name = "FOV";
+			FOV.transform.parent = NewGUIManager.transform;
+		}
 
         if (PlayerController != null)
         {
@@ -215,12 +251,24 @@ public class OVRUGUI
             {
                 Height = UIObjectManager(Height, "Height", posY -= offsetY, strHeight, fontSize);
             }
+			else
+			{
+				Height = new GameObject();
+				Height.name = "Height";
+				Height.transform.parent = NewGUIManager.transform;
+			}
 
             // Print out for Speed Rotation Multiplier
             if (!string.IsNullOrEmpty(strSpeedRotationMultipler))
             {
                 SpeedRotationMutipler = UIObjectManager(SpeedRotationMutipler, "SpeedRotationMutipler", posY -= offsetY, strSpeedRotationMultipler, fontSize);
             }
+			else
+			{
+				SpeedRotationMutipler = new GameObject();
+				SpeedRotationMutipler.name = "SpeedRotationMutipler";
+				SpeedRotationMutipler.transform.parent = NewGUIManager.transform;
+			}
         }
 
         // Print out for Resoulution of Eye Texture
@@ -228,6 +276,12 @@ public class OVRUGUI
         {
             ResolutionEyeTexture = UIObjectManager(ResolutionEyeTexture, "Resolution", posY -= offsetY, strResolutionEyeTexture, fontSize);
         }
+		else
+		{
+			ResolutionEyeTexture = new GameObject();
+			ResolutionEyeTexture.name = "ResolutionEyeTexture";
+			ResolutionEyeTexture.transform.parent = NewGUIManager.transform;
+		}
 
         // Print out for Latency
         if (!string.IsNullOrEmpty(strLatencies))
@@ -235,13 +289,19 @@ public class OVRUGUI
             Latencies = UIObjectManager(Latencies, "Latency", posY -= offsetY, strLatencies, 17);
             posY = 0.0f;
         }
+		else
+		{
+			Latencies = new GameObject();
+			Latencies.name = "Latencies";
+			Latencies.transform.parent = NewGUIManager.transform;
+		}
 
         InitUIComponent = false;
         isInited = true;
 
     }
 
-    static GameObject UIObjectManager(GameObject gameObject, string name, float posY, string text, int fontSize)
+    public static GameObject UIObjectManager(GameObject gameObject, string name, float posY, string text, int fontSize)
     {
         gameObject = ComponentComposition(gameObject);
         gameObject.name = name;
@@ -260,6 +320,27 @@ public class OVRUGUI
         return gameObject;
 
     }
+
+	//UI Object Manager to add color
+	public static GameObject UIObjectManager(GameObject gameObject, string name, float posY, string text, int fontSize, Color color)
+	{
+		gameObject = ComponentComposition(gameObject, color);
+		gameObject.name = name;
+		gameObject.transform.parent = NewGUIManager.transform;
+		
+		RectTransform r = gameObject.GetComponent<RectTransform>();
+		r.localPosition = new Vector3(0.0f, posY -= offsetY, 0.0f);
+		
+		Text t = gameObject.GetComponentInChildren<Text>();
+		t.text = text;
+		t.fontSize = fontSize;
+		gameObject.transform.localEulerAngles = Vector3.zero;
+		
+		r.localScale = new Vector3(1.0f, 1.0f, 1.0f);
+		
+		return gameObject;
+		
+	}
     
     /// <summary>
     /// Component composition
@@ -288,5 +369,53 @@ public class OVRUGUI
         return GO;
     }
 
+	//Component Composition to add color
+	static GameObject ComponentComposition(GameObject GO, Color color)
+	{
+		GO = new GameObject();
+		GO.AddComponent<RectTransform>();
+		GO.AddComponent<CanvasRenderer>();
+		GO.AddComponent<Image>();
+		GO.GetComponent<RectTransform>().sizeDelta = new Vector2(350f, 50f);
+		GO.GetComponent<Image>().color = color;
+		
+		text = new GameObject();
+		text.AddComponent<RectTransform>();
+		text.AddComponent<CanvasRenderer>();
+		text.AddComponent<Text>();
+		text.GetComponent<RectTransform>().sizeDelta = new Vector2(350f, 50f);
+		text.GetComponent<Text>().font = (Font)Resources.Load("DINPro-Bold");
+		text.GetComponent<Text>().alignment = TextAnchor.MiddleCenter;
+		
+		text.transform.parent = GO.transform;
+		text.name = "TextBox";
+		
+		return GO;
+	}
+
+	public static void SetGUIActive(bool active)
+	{
+		//Set Active
+		//if (LowPersistence)
+			LowPersistence.SetActive(active);
+		//if (VisionMode)
+			VisionMode.SetActive(active);
+		//if (FPS)
+			FPS.SetActive(active);
+		//if (Prediction)
+			Prediction.SetActive(active);
+		//if (IPD)
+			IPD.SetActive(active);
+		//if (FOV)
+			FOV.SetActive(active);
+		//if (Height)
+			Height.SetActive(active);
+		//if (SpeedRotationMutipler)
+			SpeedRotationMutipler.SetActive(active);
+		//if (ResolutionEyeTexture)
+			ResolutionEyeTexture.SetActive(active);
+		//if (Latencies)
+			Latencies.SetActive(active);
+	}
 #endif
 }

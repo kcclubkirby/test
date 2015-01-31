@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using Ovr;
 
 public class CPRChest : MonoBehaviour {
 
@@ -14,6 +15,9 @@ public class CPRChest : MonoBehaviour {
 	//The boolean which activates the CPR section of the game
 	public bool readyForInteraction = false;
 
+	//The objects created when touched
+	private static GameObject Victory;
+
 	//Triggers when something collides with the box
 	void OnTriggerEnter(Collider other){
 		//If the simulation part has begun
@@ -26,7 +30,8 @@ public class CPRChest : MonoBehaviour {
 				palm = trigger.GetComponent<palmClass>();
 				if (palm) //if it is a palm
 				{
-
+					OVRUGUI.UIObjectManager(Victory,"Victory",-55,"Victory!! Congratulations!",20,
+					                        new Color(7f / 255f, 90f / 255f, 41f / 255f, 200f / 255f));
 				}
 			}
 		}

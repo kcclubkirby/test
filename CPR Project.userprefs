@@ -2,10 +2,10 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\CPRChest.cs">
     <Files>
-      <File FileName="Assets\CPRChest.cs" Line="29" Column="6" />
-      <File FileName="Assets\LeapMotion\Scripts\Hands\RigidHand.cs" Line="1" Column="1" />
-      <File FileName="Assets\OVR\Scripts\Util\OVRPlayerController.cs" Line="1" Column="1" />
-      <File FileName="Assets\LeapMotion\Scripts\Hands\SkeletalHand.cs" Line="1" Column="1" />
+      <File FileName="Assets\OVR\Scripts\Util\OVRMainMenu.cs" Line="344" Column="1" />
+      <File FileName="Assets\OVR\Scripts\OVRManager.cs" Line="1" Column="1" />
+      <File FileName="Assets\OVR\Scripts\Util\OVRUGUI.cs" Line="118" Column="1" />
+      <File FileName="Assets\CPRChest.cs" Line="33" Column="82" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

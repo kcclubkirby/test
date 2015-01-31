@@ -219,6 +219,7 @@ public class OVRMainMenu : MonoBehaviour
 	        r.localScale = new Vector3(0.001f, 0.001f, 0.001f);
 	        r.localPosition = new Vector3(0.01f, 0.17f, 0.53f);
 	        r.localEulerAngles = Vector3.zero;
+			NewGUIObject.SetActive(true);
 
 			Canvas c = NewGUIObject.AddComponent<Canvas>();
 #if (UNITY_5_0)
@@ -338,6 +339,9 @@ public class OVRMainMenu : MonoBehaviour
         if (!string.IsNullOrEmpty(strRiftPresent)){
             ShowRiftPresentGUI();
         }
+
+		OVRUGUI.InitUIComponent = true;
+		OVRUGUI.UpdateGUI();
 #endif
 	} 
 	
@@ -387,11 +391,20 @@ public class OVRMainMenu : MonoBehaviour
             NewGUIObject.SetActive(true);
             UpdateNewGUIVars();
             OVRUGUI.UpdateGUI();
+			OVRUGUI.SetGUIActive(true);
         }
-        else
+        else if (RiftPresentTimeout <= 0.0f)
         {
-            NewGUIObject.SetActive(false);
+			OVRUGUI.InitUIComponent = true;
+			OVRUGUI.UpdateGUI();
+			OVRUGUI.SetGUIActive(false);
         }
+		/*else
+		{
+
+			NewGUIObject.SetActive(false);
+			OVRUGUI.UpdateGUI();
+		}*/
 #endif
      
         // Toggle Fullscreen
@@ -811,7 +824,7 @@ public class OVRMainMenu : MonoBehaviour
     void GUIShowVRVariables()
     {
         bool SpaceHit = Input.GetKey(MenuKey);
-        if ((OldSpaceHit == false) && (SpaceHit == true))
+        /*if ((OldSpaceHit == false) && (SpaceHit == true))
         {
             if (ShowVRVars == true)
             {
@@ -824,7 +837,7 @@ public class OVRMainMenu : MonoBehaviour
                 OVRUGUI.InitUIComponent = ShowVRVars;
 #endif
             }
-        }
+        }*/
 
         OldSpaceHit = SpaceHit;
 
